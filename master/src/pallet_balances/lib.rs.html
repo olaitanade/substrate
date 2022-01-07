@@ -2162,7 +2162,6 @@
 <span id="2162">2162</span>
 <span id="2163">2163</span>
 <span id="2164">2164</span>
-<span id="2165">2165</span>
 </pre><pre class="rust"><code><span class="comment">// This file is part of Substrate.</span>
 
 <span class="comment">// Copyright (C) 2017-2022 Parity Technologies (UK) Ltd.</span>
@@ -2415,7 +2414,6 @@
 		<span class="doccomment">/// Transfer some liquid free balance to another account.</span>
 		<span class="doccomment">///</span>
 		<span class="doccomment">/// `transfer` will set the `FreeBalance` of the sender and receiver.</span>
-		<span class="doccomment">/// It will decrease the total issuance of the system by the `TransferFee`.</span>
 		<span class="doccomment">/// If the sender&#39;s account is below the existential deposit as a result</span>
 		<span class="doccomment">/// of the transfer, the account will be reaped.</span>
 		<span class="doccomment">///</span>
@@ -2458,7 +2456,7 @@
 		<span class="doccomment">/// Set the balances of a given account.</span>
 		<span class="doccomment">///</span>
 		<span class="doccomment">/// This will alter `FreeBalance` and `ReservedBalance` in storage. it will</span>
-		<span class="doccomment">/// also decrease the total issuance of the system (`TotalIssuance`).</span>
+		<span class="doccomment">/// also alter the total issuance of the system (`TotalIssuance`) appropriately.</span>
 		<span class="doccomment">/// If the new free or reserved balance is below the existential deposit,</span>
 		<span class="doccomment">/// it will reset the account nonce (`frame_system::AccountNonce`).</span>
 		<span class="doccomment">///</span>

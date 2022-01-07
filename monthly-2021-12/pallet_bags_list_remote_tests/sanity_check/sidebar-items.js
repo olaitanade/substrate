@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["execute","Execute the sanity check of the bags-list."]]});

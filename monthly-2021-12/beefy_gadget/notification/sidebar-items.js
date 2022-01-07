@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["BeefySignedCommitmentSender","The sending half of the signed commitment channel(s)."],["BeefySignedCommitmentStream","The receiving half of the signed commitments channel."]],"type":[["SignedCommitment","Stream of signed commitments returned when subscribing."]]});

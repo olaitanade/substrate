@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["execute","Execute create a snapshot from pallet-staking."]]});

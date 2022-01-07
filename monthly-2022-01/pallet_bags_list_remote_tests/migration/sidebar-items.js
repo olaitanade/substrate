@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["execute","Test voter bags migration. `currency_unit` is the number of planks per the the runtimes `UNITS` (i.e. number of decimal places per DOT, KSM etc)"]]});

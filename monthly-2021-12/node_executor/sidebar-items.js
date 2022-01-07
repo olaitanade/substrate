@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["ExecutorDispatch",""],["NativeElseWasmExecutor","A generic `CodeExecutor` implementation that uses a delegate to determine wasm code equivalence and dispatch to native code when possible, falling back on `WasmExecutor` when not."]]});

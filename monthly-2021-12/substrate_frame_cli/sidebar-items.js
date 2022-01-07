@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["PalletIdCmd","The `palletid` command"]]});
