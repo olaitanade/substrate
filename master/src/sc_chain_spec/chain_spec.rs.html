@@ -710,10 +710,10 @@
 	<span class="attribute">#[<span class="ident">serde</span>(<span class="ident">skip_serializing</span>)]</span>
 	<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused</span>)]</span>
 	<span class="ident">genesis</span>: <span class="ident">serde::de::IgnoredAny</span>,
-	<span class="doccomment">/// Mapping from `block_hash` to `wasm_code`.</span>
+	<span class="doccomment">/// Mapping from `block_number` to `wasm_code`.</span>
 	<span class="doccomment">///</span>
-	<span class="doccomment">/// The given `wasm_code` will be used to substitute the on-chain wasm code from the given</span>
-	<span class="doccomment">/// block hash onwards.</span>
+	<span class="doccomment">/// The given `wasm_code` will be used to substitute the on-chain wasm code starting with the</span>
+	<span class="doccomment">/// given block number until the `spec_version` on chain changes.</span>
 	<span class="attribute">#[<span class="ident">serde</span>(<span class="ident">default</span>)]</span>
 	<span class="ident">code_substitutes</span>: <span class="ident">BTreeMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">Bytes</span><span class="op">&gt;</span>,
 }

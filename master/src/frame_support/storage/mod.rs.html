@@ -1786,6 +1786,19 @@
 <span id="1786">1786</span>
 <span id="1787">1787</span>
 <span id="1788">1788</span>
+<span id="1789">1789</span>
+<span id="1790">1790</span>
+<span id="1791">1791</span>
+<span id="1792">1792</span>
+<span id="1793">1793</span>
+<span id="1794">1794</span>
+<span id="1795">1795</span>
+<span id="1796">1796</span>
+<span id="1797">1797</span>
+<span id="1798">1798</span>
+<span id="1799">1799</span>
+<span id="1800">1800</span>
+<span id="1801">1801</span>
 </pre><pre class="rust"><code><span class="comment">// This file is part of Substrate.</span>
 
 <span class="comment">// Copyright (C) 2017-2022 Parity Technologies (UK) Ltd.</span>
@@ -2588,6 +2601,19 @@
 	<span class="doccomment">/// `raw_key_without_prefix` is the raw storage key without the prefix iterated on.</span>
 	<span class="ident">closure</span>: <span class="kw">fn</span>(<span class="kw-2">&amp;</span>[<span class="ident">u8</span>], <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">codec::Error</span><span class="op">&gt;</span>,
 	<span class="ident">phantom</span>: <span class="ident">core::marker::PhantomData</span><span class="op">&lt;</span><span class="ident">OnRemoval</span><span class="op">&gt;</span>,
+}
+
+<span class="kw">impl</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">OnRemoval1</span><span class="op">&gt;</span> <span class="ident">PrefixIterator</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">OnRemoval1</span><span class="op">&gt;</span> {
+	<span class="doccomment">/// Converts to the same iterator but with the different &#39;OnRemoval&#39; type</span>
+	<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">convert_on_removal</span><span class="op">&lt;</span><span class="ident">OnRemoval2</span><span class="op">&gt;</span>(<span class="self">self</span>) -&gt; <span class="ident">PrefixIterator</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">OnRemoval2</span><span class="op">&gt;</span> {
+		<span class="ident">PrefixIterator</span>::<span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">OnRemoval2</span><span class="op">&gt;</span> {
+			<span class="ident">prefix</span>: <span class="self">self</span>.<span class="ident">prefix</span>,
+			<span class="ident">previous_key</span>: <span class="self">self</span>.<span class="ident">previous_key</span>,
+			<span class="ident">drain</span>: <span class="self">self</span>.<span class="ident">drain</span>,
+			<span class="ident">closure</span>: <span class="self">self</span>.<span class="ident">closure</span>,
+			<span class="ident">phantom</span>: <span class="ident">Default::default</span>(),
+		}
+	}
 }
 
 <span class="doccomment">/// Trait for specialising on removal logic of [`PrefixIterator`].</span>

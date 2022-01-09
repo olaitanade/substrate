@@ -2217,7 +2217,7 @@
 	<span class="kw">pub</span> <span class="ident">no_genesis</span>: <span class="ident">bool</span>,
 	<span class="doccomment">/// Map of WASM runtime substitute starting at the child of the given block until the runtime</span>
 	<span class="doccomment">/// version doesn&#39;t match anymore.</span>
-	<span class="kw">pub</span> <span class="ident">wasm_runtime_substitutes</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">Block::Hash</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+	<span class="kw">pub</span> <span class="ident">wasm_runtime_substitutes</span>: <span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">NumberFor</span><span class="op">&lt;</span><span class="ident">Block</span><span class="op">&gt;</span>, <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span><span class="op">&gt;</span>,
 }
 
 <span class="kw">impl</span><span class="op">&lt;</span><span class="ident">Block</span>: <span class="ident">BlockT</span><span class="op">&gt;</span> <span class="ident">Default</span> <span class="kw">for</span> <span class="ident">ClientConfig</span><span class="op">&lt;</span><span class="ident">Block</span><span class="op">&gt;</span> {
