@@ -902,6 +902,17 @@
 <span id="902">902</span>
 <span id="903">903</span>
 <span id="904">904</span>
+<span id="905">905</span>
+<span id="906">906</span>
+<span id="907">907</span>
+<span id="908">908</span>
+<span id="909">909</span>
+<span id="910">910</span>
+<span id="911">911</span>
+<span id="912">912</span>
+<span id="913">913</span>
+<span id="914">914</span>
+<span id="915">915</span>
 </pre><pre class="rust"><code><span class="comment">// This file is part of Substrate.</span>
 
 <span class="comment">// Copyright (C) 2018-2022 Parity Technologies (UK) Ltd.</span>
@@ -1394,24 +1405,34 @@
 	<span class="ident">error</span>
 }
 
+<span class="doccomment">/// Aura Errors</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">derive_more::Display</span>, <span class="ident">Debug</span>)]</span>
-<span class="kw">enum</span> <span class="ident">Error</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">BlockT</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">Error</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">BlockT</span><span class="op">&gt;</span> {
+	<span class="doccomment">/// Multiple Aura pre-runtime headers</span>
 	<span class="attribute">#[<span class="ident">display</span>(<span class="ident">fmt</span> <span class="op">=</span> <span class="string">&quot;Multiple Aura pre-runtime headers&quot;</span>)]</span>
 	<span class="ident">MultipleHeaders</span>,
+	<span class="doccomment">/// No Aura pre-runtime digest found</span>
 	<span class="attribute">#[<span class="ident">display</span>(<span class="ident">fmt</span> <span class="op">=</span> <span class="string">&quot;No Aura pre-runtime digest found&quot;</span>)]</span>
 	<span class="ident">NoDigestFound</span>,
+	<span class="doccomment">/// Header is unsealed</span>
 	<span class="attribute">#[<span class="ident">display</span>(<span class="ident">fmt</span> <span class="op">=</span> <span class="string">&quot;Header {:?} is unsealed&quot;</span>, <span class="ident">_0</span>)]</span>
 	<span class="ident">HeaderUnsealed</span>(<span class="ident">B::Hash</span>),
+	<span class="doccomment">/// Header has a bad seal</span>
 	<span class="attribute">#[<span class="ident">display</span>(<span class="ident">fmt</span> <span class="op">=</span> <span class="string">&quot;Header {:?} has a bad seal&quot;</span>, <span class="ident">_0</span>)]</span>
 	<span class="ident">HeaderBadSeal</span>(<span class="ident">B::Hash</span>),
+	<span class="doccomment">/// Slot Author not found</span>
 	<span class="attribute">#[<span class="ident">display</span>(<span class="ident">fmt</span> <span class="op">=</span> <span class="string">&quot;Slot Author not found&quot;</span>)]</span>
 	<span class="ident">SlotAuthorNotFound</span>,
+	<span class="doccomment">/// Bad signature</span>
 	<span class="attribute">#[<span class="ident">display</span>(<span class="ident">fmt</span> <span class="op">=</span> <span class="string">&quot;Bad signature on {:?}&quot;</span>, <span class="ident">_0</span>)]</span>
 	<span class="ident">BadSignature</span>(<span class="ident">B::Hash</span>),
+	<span class="doccomment">/// Client Error</span>
 	<span class="ident">Client</span>(<span class="ident">sp_blockchain::Error</span>),
+	<span class="doccomment">/// Unknown inherent error for identifier</span>
 	<span class="attribute">#[<span class="ident">display</span>(<span class="ident">fmt</span> <span class="op">=</span> <span class="string">&quot;Unknown inherent error for identifier: {}&quot;</span>, <span class="string">&quot;String::from_utf8_lossy(_0)&quot;</span>)]</span>
 	<span class="ident">UnknownInherentError</span>(<span class="ident">sp_inherents::InherentIdentifier</span>),
 	<span class="attribute">#[<span class="ident">display</span>(<span class="ident">fmt</span> <span class="op">=</span> <span class="string">&quot;Inherent error: {}&quot;</span>, <span class="ident">_0</span>)]</span>
+	<span class="doccomment">/// Inherents Error</span>
 	<span class="ident">Inherent</span>(<span class="ident">sp_inherents::Error</span>),
 }
 
@@ -1421,7 +1442,8 @@
 	}
 }
 
-<span class="kw">fn</span> <span class="ident">find_pre_digest</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">BlockT</span>, <span class="ident">Signature</span>: <span class="ident">Codec</span><span class="op">&gt;</span>(<span class="ident">header</span>: <span class="kw-2">&amp;</span><span class="ident">B::Header</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Slot</span>, <span class="ident">Error</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span> {
+<span class="doccomment">/// Get pre-digests from the header</span>
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">find_pre_digest</span><span class="op">&lt;</span><span class="ident">B</span>: <span class="ident">BlockT</span>, <span class="ident">Signature</span>: <span class="ident">Codec</span><span class="op">&gt;</span>(<span class="ident">header</span>: <span class="kw-2">&amp;</span><span class="ident">B::Header</span>) -&gt; <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Slot</span>, <span class="ident">Error</span><span class="op">&lt;</span><span class="ident">B</span><span class="op">&gt;</span><span class="op">&gt;</span> {
 	<span class="kw">if</span> <span class="ident">header</span>.<span class="ident">number</span>().<span class="ident">is_zero</span>() {
 		<span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="number">0</span>.<span class="ident">into</span>())
 	}
