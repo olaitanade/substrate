@@ -309,6 +309,7 @@
 <span id="309">309</span>
 <span id="310">310</span>
 <span id="311">311</span>
+<span id="312">312</span>
 </pre><pre class="rust"><code><span class="comment">// This file is part of Substrate.</span>
 
 <span class="comment">// Copyright (C) 2019-2022 Parity Technologies (UK) Ltd.</span>
@@ -550,7 +551,8 @@
 		<span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">parent_hash</span> <span class="op">=</span> <span class="ident">System::parent_hash</span>();
 
 		<span class="kw">for</span> <span class="ident">i</span> <span class="kw">in</span> <span class="number">1</span>..(<span class="ident">blocks</span> <span class="op">+</span> <span class="number">1</span>) {
-			<span class="ident">System::initialize</span>(<span class="kw-2">&amp;</span><span class="ident">i</span>, <span class="kw-2">&amp;</span><span class="ident">parent_hash</span>, <span class="kw-2">&amp;</span><span class="ident">Default::default</span>(), <span class="ident">frame_system::InitKind::Full</span>);
+			<span class="ident">System::reset_events</span>();
+			<span class="ident">System::initialize</span>(<span class="kw-2">&amp;</span><span class="ident">i</span>, <span class="kw-2">&amp;</span><span class="ident">parent_hash</span>, <span class="kw-2">&amp;</span><span class="ident">Default::default</span>());
 			<span class="ident">CollectiveFlip::on_initialize</span>(<span class="ident">i</span>);
 
 			<span class="kw">let</span> <span class="ident">header</span> <span class="op">=</span> <span class="ident">System::finalize</span>();
