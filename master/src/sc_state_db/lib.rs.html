@@ -710,6 +710,9 @@
 <span id="710">710</span>
 <span id="711">711</span>
 <span id="712">712</span>
+<span id="713">713</span>
+<span id="714">714</span>
+<span id="715">715</span>
 </pre><pre class="rust"><code><span class="comment">// This file is part of Substrate.</span>
 
 <span class="comment">// Copyright (C) 2017-2022 Parity Technologies (UK) Ltd.</span>
@@ -842,6 +845,8 @@
 	<span class="ident">InvalidPruningMode</span>(<span class="ident">String</span>),
 	<span class="doccomment">/// Too many unfinalized sibling blocks inserted.</span>
 	<span class="ident">TooManySiblingBlocks</span>,
+	<span class="doccomment">/// Trying to insert existing block.</span>
+	<span class="ident">BlockAlreadyExists</span>,
 }
 
 <span class="doccomment">/// Pinning error type.</span>
@@ -866,6 +871,7 @@
 			<span class="ident">Error::InvalidParent</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Trying to insert block with unknown parent&quot;</span>),
 			<span class="ident">Error::InvalidPruningMode</span>(<span class="ident">e</span>) =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Expected pruning mode: {}&quot;</span>, <span class="ident">e</span>),
 			<span class="ident">Error::TooManySiblingBlocks</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Too many sibling blocks inserted&quot;</span>),
+			<span class="ident">Error::BlockAlreadyExists</span> =&gt; <span class="macro">write!</span>(<span class="ident">f</span>, <span class="string">&quot;Block already exists&quot;</span>),
 		}
 	}
 }
