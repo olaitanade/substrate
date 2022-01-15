@@ -231,6 +231,11 @@
 <span id="231">231</span>
 <span id="232">232</span>
 <span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
 </pre><pre class="rust"><code><span class="comment">// This file is part of Substrate.</span>
 
 <span class="comment">// Copyright (C) 2019-2022 Parity Technologies (UK) Ltd.</span>
@@ -400,6 +405,11 @@
 	<span class="comment">// we call to the old wasm binary with a new host functions</span>
 	<span class="comment">// old versions of host functions should be called and test should be ok!</span>
 	<span class="ident">call_wasm_method</span>::<span class="op">&lt;</span><span class="ident">HostFunctions</span><span class="op">&gt;</span>(<span class="ident">wasm_binary_deprecated_unwrap</span>(), <span class="string">&quot;test_versionning_works&quot;</span>);
+}
+
+<span class="attribute">#[<span class="ident">test</span>]</span>
+<span class="kw">fn</span> <span class="ident">test_versionining_register_only</span>() {
+	<span class="ident">call_wasm_method</span>::<span class="op">&lt;</span><span class="ident">HostFunctions</span><span class="op">&gt;</span>(<span class="ident">wasm_binary_unwrap</span>(), <span class="string">&quot;test_versionning_register_only_works&quot;</span>);
 }
 
 <span class="attribute">#[<span class="ident">test</span>]</span>
