@@ -985,6 +985,7 @@
 <span id="985">985</span>
 <span id="986">986</span>
 <span id="987">987</span>
+<span id="988">988</span>
 </pre><pre class="rust"><code><span class="comment">// This file is part of Substrate.</span>
 
 <span class="comment">// Copyright (C) 2018-2022 Parity Technologies (UK) Ltd.</span>
@@ -1365,6 +1366,7 @@
 		<span class="comment">// Generate the generator function</span>
 		<span class="ident">result</span>.<span class="ident">push</span>(<span class="macro">quote!</span>(
 			<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">any</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">test</span>))]</span>
+			<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::too_many_arguments</span>)]</span>
 			<span class="kw">pub</span> <span class="kw">fn</span> #<span class="ident">fn_name</span><span class="op">&lt;</span>
 				<span class="ident">R</span>: #<span class="ident">crate_::Encode</span> <span class="op">+</span> #<span class="ident">crate_::Decode</span> <span class="op">+</span> <span class="ident">PartialEq</span>,
 				<span class="ident">NC</span>: <span class="ident">FnOnce</span>() -&gt; <span class="ident">std::result::Result</span><span class="op">&lt;</span><span class="ident">R</span>, #<span class="ident">crate_::ApiError</span><span class="op">&gt;</span> <span class="op">+</span> <span class="ident">std::panic::UnwindSafe</span>,
